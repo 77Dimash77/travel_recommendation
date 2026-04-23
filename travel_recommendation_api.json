@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Бонди Бич",
       "country": "Австралия",
-      "imageUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600",
+      "imageUrl": "images/beach_bondi.jpg",
       "description": "Знаменитый пляж в Сиднее с кристально чистой водой и золотым песком. Идеально подходит для серфинга и отдыха на солнце.",
       "timeZone": "Australia/Sydney"
     },
@@ -12,7 +12,7 @@
       "id": 2,
       "name": "Пляж Майами",
       "country": "США",
-      "imageUrl": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600",
+      "imageUrl": "images/beach_miami.jpg",
       "description": "Живой пляж с пальмами, ярким ночным развлечениями и тёплыми водами Атлантического океана.",
       "timeZone": "America/New_York"
     },
@@ -20,7 +20,7 @@
       "id": 3,
       "name": "Пляж Ко-Пи-Пи",
       "country": "Таиланд",
-      "imageUrl": "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600",
+      "imageUrl": "images/beach_koh_phi.jpg",
       "description": "Тропический рай с бирюзовыми водами, известняковыми скалами и потрясающими закатами.",
       "timeZone": "Asia/Bangkok"
     }
@@ -30,7 +30,7 @@
       "id": 1,
       "name": "Ангкор-Ват",
       "country": "Камбоджа",
-      "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600",
+      "imageUrl": "images/temple_angkor.jpg",
       "description": "Крупнейший религиозный комплекс в мире, шедевр кхмерской архитектуры XII века.",
       "timeZone": "Asia/Phnom_Penh"
     },
@@ -38,7 +38,7 @@
       "id": 2,
       "name": "Храм Сенсо-дзи",
       "country": "Япония",
-      "imageUrl": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600",
+      "imageUrl": "images/temple_sensoji.jpg",
       "description": "Древнейший буддийский храм Токио, расположенный в районе Асакуса, с живописными воротами Каминаримон.",
       "timeZone": "Asia/Tokyo"
     },
@@ -46,7 +46,7 @@
       "id": 3,
       "name": "Золотой Храм",
       "country": "Индия",
-      "imageUrl": "https://images.unsplash.com/photo-1518002054494-3a6f94352e9d?w=600",
+      "imageUrl": "images/temple_golden.jpg",
       "description": "Священный сикхский храм в Амритсаре, покрытый золотом, отражающийся в священном водоёме.",
       "timeZone": "Asia/Kolkata"
     }
@@ -56,7 +56,7 @@
       "id": 1,
       "name": "Япония",
       "capital": "Токио",
-      "imageUrl": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600",
+      "imageUrl": "images/country_japan.jpg",
       "description": "Страна восходящего солнца, где традиции гармонично сочетаются с инновациями. Сакура, суши, аниме и горы.",
       "timeZone": "Asia/Tokyo"
     },
@@ -64,7 +64,7 @@
       "id": 2,
       "name": "Бразилия",
       "capital": "Бразилиа",
-      "imageUrl": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600",
+      "imageUrl": "images/country_brazil.jpg",
       "description": "Крупнейшая страна Южной Америки с амазонскими джунглями, карнавалом в Рио и потрясающими водопадами Игуасу.",
       "timeZone": "America/Sao_Paulo"
     },
@@ -72,7 +72,7 @@
       "id": 3,
       "name": "Италия",
       "capital": "Рим",
-      "imageUrl": "https://images.unsplash.com/photo-1529260830199-42c24126f198?w=600",
+      "imageUrl": "images/country_italy.jpg",
       "description": "Колыбель европейской цивилизации с Колизеем, каналами Венеции, тосканскими холмами и лучшей кухней мира.",
       "timeZone": "Europe/Rome"
     }
