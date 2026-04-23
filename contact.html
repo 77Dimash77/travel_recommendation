@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Связаться с нами — Travel Recommendations</title>
+  <link rel="stylesheet" href="./travel_recommendation.css">
+</head>
+<body>
+
+  <nav>
+    <h1>Travel Recommendations</h1>
+    <ul>
+      <li><a href="./travel_recommendation.html" id="home">Главная</a></li>
+      <li><a href="./about.html" id="about">О нас</a></li>
+      <li><a href="./contact.html" id="contact">Связаться с нами</a></li>
+    </ul>
+  </nav>
+
+  <div class="contact-section">
+    <h2>Связаться с нами</h2>
+    <p>Есть вопросы или хотите забронировать тур? Напишите нам — мы ответим в течение 24 часов.</p>
+
+    <form id="contactForm">
+      <div>
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="message">Сообщение:</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <button type="submit" onclick="thankyou()">Отправить</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2024 Travel Recommendations. Все права защищены.
+  </footer>
+
+  <script>
+    function thankyou() {
+      alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
+    }
+  </script>
+</body>
+</html>

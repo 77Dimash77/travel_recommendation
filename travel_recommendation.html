@@ -1,245 +1,47 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Travel Recommendations — Откройте мир</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body { font-family: 'Segoe UI', sans-serif; color: #333; }
-
-    /* ── NAVBAR ── */
-    nav {
-      position: fixed; top: 0; width: 100%; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 40px;
-      background: rgba(10, 30, 60, 0.92);
-      backdrop-filter: blur(8px);
-    }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-logo img { height: 40px; border-radius: 50%; }
-    .nav-logo span { color: #fff; font-size: 1.3rem; font-weight: 700; letter-spacing: 1px; }
-    .nav-links { display: flex; gap: 30px; list-style: none; }
-    .nav-links a { color: #ddd; text-decoration: none; font-size: 0.95rem; transition: color .2s; }
-    .nav-links a:hover { color: #ffd700; }
-    .nav-search { display: flex; gap: 8px; align-items: center; }
-    .nav-search input {
-      padding: 8px 14px; border-radius: 25px; border: none; outline: none;
-      font-size: 0.9rem; width: 220px; background: rgba(255,255,255,0.15);
-      color: #fff;
-    }
-    .nav-search input::placeholder { color: #bbb; }
-    .btn-search, .btn-reset {
-      padding: 8px 16px; border-radius: 25px; border: none; cursor: pointer;
-      font-size: 0.85rem; font-weight: 600; transition: background .2s;
-    }
-    .btn-search { background: #ffd700; color: #111; }
-    .btn-search:hover { background: #ffb300; }
-    .btn-reset { background: transparent; color: #fff; border: 1px solid #fff; }
-    .btn-reset:hover { background: rgba(255,255,255,0.15); }
-
-    /* ── HERO ── */
-    #home {
-      height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-        url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600') center/cover no-repeat;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; color: #fff; padding: 0 20px;
-    }
-    #home h1 { font-size: 3rem; margin-bottom: 16px; line-height: 1.2; }
-    #home h1 span { color: #ffd700; }
-    #home p { font-size: 1.2rem; max-width: 600px; margin-bottom: 32px; opacity: .9; }
-    .btn-book {
-      padding: 14px 40px; border-radius: 30px; background: #ffd700; color: #111;
-      font-size: 1rem; font-weight: 700; text-decoration: none; transition: background .2s;
-      display: inline-block;
-    }
-    .btn-book:hover { background: #ffb300; }
-    .social-icons { margin-top: 40px; display: flex; gap: 18px; }
-    .social-icons a { color: #fff; font-size: 1.4rem; transition: color .2s; }
-    .social-icons a:hover { color: #ffd700; }
-
-    /* ── RESULTS ── */
-    #results-section {
-      padding: 60px 40px 40px;
-      background: #f5f7fb;
-      display: none;
-    }
-    #results-section h2 { text-align: center; font-size: 1.8rem; margin-bottom: 30px; color: #0a1e3c; }
-    #results-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 24px;
-    }
-    .result-card {
-      background: #fff; border-radius: 12px; overflow: hidden;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1); transition: transform .2s;
-    }
-    .result-card:hover { transform: translateY(-5px); }
-    .result-card img { width: 100%; height: 200px; object-fit: cover; }
-    .card-body { padding: 16px; }
-    .card-body h3 { font-size: 1.1rem; margin-bottom: 6px; color: #0a1e3c; }
-    .card-body .country-tag {
-      font-size: 0.8rem; color: #fff; background: #0a6ebd;
-      display: inline-block; padding: 2px 10px; border-radius: 20px; margin-bottom: 8px;
-    }
-    .card-body p { font-size: 0.9rem; color: #555; line-height: 1.5; }
-    .card-time { font-size: 0.8rem; color: #888; margin-top: 8px; }
-
-    /* ── ABOUT ── */
-    #about {
-      padding: 100px 40px 60px;
-      background: #fff;
-    }
-    #about h2 { text-align: center; font-size: 2rem; margin-bottom: 16px; color: #0a1e3c; }
-    .about-intro { text-align: center; max-width: 700px; margin: 0 auto 48px; font-size: 1rem; color: #555; line-height: 1.7; }
-    .team-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px;
-      max-width: 900px; margin: 0 auto;
-    }
-    .team-card {
-      text-align: center; padding: 24px 16px; border-radius: 12px;
-      background: #f5f7fb; box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    }
-    .team-card .avatar {
-      width: 80px; height: 80px; border-radius: 50%; background: #0a6ebd;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2rem; color: #fff; margin: 0 auto 14px;
-    }
-    .team-card h4 { font-size: 1rem; color: #0a1e3c; margin-bottom: 4px; }
-    .team-card span { font-size: 0.85rem; color: #888; }
-
-    /* ── CONTACT ── */
-    #contact {
-      padding: 80px 40px;
-      background: linear-gradient(135deg, #0a1e3c 0%, #0a6ebd 100%);
-      color: #fff;
-    }
-    #contact h2 { text-align: center; font-size: 2rem; margin-bottom: 10px; }
-    #contact p.sub { text-align: center; color: #cce0ff; margin-bottom: 40px; }
-    .contact-form {
-      max-width: 600px; margin: 0 auto;
-      display: flex; flex-direction: column; gap: 16px;
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .contact-form input, .contact-form textarea {
-      padding: 12px 16px; border-radius: 8px; border: none; outline: none;
-      font-size: 0.95rem; font-family: inherit;
-      background: rgba(255,255,255,0.15); color: #fff;
-    }
-    .contact-form input::placeholder, .contact-form textarea::placeholder { color: #aac4e8; }
-    .contact-form textarea { resize: vertical; min-height: 140px; }
-    .btn-submit {
-      padding: 14px; border-radius: 30px; border: none; cursor: pointer;
-      background: #ffd700; color: #111; font-size: 1rem; font-weight: 700;
-      transition: background .2s;
-    }
-    .btn-submit:hover { background: #ffb300; }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center; padding: 20px; background: #0a1e3c; color: #888; font-size: 0.85rem;
-    }
-
-    @media (max-width: 768px) {
-      nav { flex-wrap: wrap; gap: 10px; padding: 12px 20px; }
-      .nav-search input { width: 150px; }
-      #home h1 { font-size: 2rem; }
-      .form-row { grid-template-columns: 1fr; }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Travel Recommendations</title>
+  <link rel="stylesheet" href="./travel_recommendation.css">
 </head>
 <body>
 
-  <!-- ── NAVIGATION ── -->
   <nav>
-    <a class="nav-logo" href="#home">
-      <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=80&h=80&fit=crop" alt="Logo" />
-      <span>TravelWorld</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#home">Главная</a></li>
-      <li><a href="#about">О нас</a></li>
-      <li><a href="#contact">Связаться с нами</a></li>
+    <h1>Travel Recommendations</h1>
+    <ul>
+      <li><a href="./travel_recommendation.html" id="home">Главная</a></li>
+      <li><a href="./about.html" id="about">О нас</a></li>
+      <li><a href="./contact.html" id="contact">Связаться с нами</a></li>
+      <li><input type="text" id="searchInput" placeholder="Пляж, храм, страна..."></li>
+      <li><button onclick="handleSearch()">Поиск</button></li>
+      <li><button class="btn-reset" onclick="handleReset()">Сброс</button></li>
     </ul>
-    <div class="nav-search">
-      <input type="text" id="searchInput" placeholder="Пляж, храм, страна…" />
-      <button class="btn-search" onclick="handleSearch()">Поиск</button>
-      <button class="btn-reset" onclick="handleReset()">Сброс</button>
-    </div>
   </nav>
 
-  <!-- ── HERO ── -->
-  <section id="home">
-    <h1>Откройте <span>мир</span> вместе с нами</h1>
-    <p>Исследуйте уникальные направления, погружайтесь в культуру и создавайте незабываемые воспоминания.</p>
-    <a href="#contact" class="btn-book">Забронировать сейчас</a>
-    <div class="social-icons">
-      <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
-      <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-      <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+  <div class="hero">
+    <div class="hero-overlay">
+      <h2>Откройте мир вместе с нами</h2>
+      <p>Исследуйте уникальные направления и создавайте незабываемые воспоминания.</p>
+      <a href="./contact.html"><button class="btn-book">Забронировать сейчас</button></a>
+      <div class="social-icons">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+        <a href="#">YouTube</a>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ── RESULTS ── -->
-  <section id="results-section">
+  <div id="results-section">
     <h2 id="results-title">Результаты поиска</h2>
     <div id="results-container"></div>
-  </section>
-
-  <!-- ── ABOUT ── -->
-  <section id="about">
-    <h2>О нас</h2>
-    <p class="about-intro">
-      TravelWorld — ваш надёжный проводник в мире путешествий с 2015 года. Мы помогаем тысячам
-      путешественников открывать новые горизонты, предлагая тщательно отобранные маршруты,
-      культурные истории и практические советы для каждого направления.
-    </p>
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="avatar">👩</div>
-        <h4>Анна Смирнова</h4>
-        <span>Генеральный директор</span>
-      </div>
-      <div class="team-card">
-        <div class="avatar">👨</div>
-        <h4>Дмитрий Козлов</h4>
-        <span>Главный редактор</span>
-      </div>
-      <div class="team-card">
-        <div class="avatar">👩</div>
-        <h4>Мария Петрова</h4>
-        <span>UX-дизайнер</span>
-      </div>
-      <div class="team-card">
-        <div class="avatar">👨</div>
-        <h4>Алексей Новиков</h4>
-        <span>Ведущий разработчик</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── CONTACT ── -->
-  <section id="contact">
-    <h2>Связаться с нами</h2>
-    <p class="sub">Есть вопросы или идеи? Напишите нам — мы ответим в течение 24 часов.</p>
-    <form class="contact-form" onsubmit="handleFormSubmit(event)">
-      <div class="form-row">
-        <input type="text" name="name" placeholder="Ваше имя" required />
-        <input type="email" name="email" placeholder="Ваш e-mail" required />
-      </div>
-      <textarea name="message" placeholder="Ваше сообщение…" required></textarea>
-      <button type="submit" class="btn-submit">Отправить</button>
-    </form>
-  </section>
+  </div>
 
   <footer>
-    &copy; 2024 TravelWorld. Все права защищены.
+    &copy; 2024 Travel Recommendations. Все права защищены.
   </footer>
 
-  <script src="travel_recommendation.js"></script>
+  <script src="./travel_recommendation.js"></script>
 </body>
 </html>
