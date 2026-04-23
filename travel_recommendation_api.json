@@ -12,7 +12,7 @@
       "id": 2,
       "name": "Пляж Майами",
       "country": "США",
-      "imageUrl": "https://images.unsplash.com/photo-1533760881669-80db4d7b341b?w=600",
+      "imageUrl": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600",
       "description": "Живой пляж с пальмами, ярким ночным развлечениями и тёплыми водами Атлантического океана.",
       "timeZone": "America/New_York"
     },
@@ -72,7 +72,7 @@
       "id": 3,
       "name": "Италия",
       "capital": "Рим",
-      "imageUrl": "https://images.unsplash.com/photo-1515542622106-078bda69b884?w=600",
+      "imageUrl": "https://images.unsplash.com/photo-1529260830199-42c24126f198?w=600",
       "description": "Колыбель европейской цивилизации с Колизеем, каналами Венеции, тосканскими холмами и лучшей кухней мира.",
       "timeZone": "Europe/Rome"
     }
